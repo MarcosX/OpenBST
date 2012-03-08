@@ -1,0 +1,15 @@
+Projeto de implementação de árvore binária de busca (BST) utilizando OpenGL para renderizar a árvore e as operações de inserção, remoção e busca
+
+==Concluidos
+- Implementação da Inserção
+- Implementação da Busca
+- Implementação da Remoção
+
+==Pendentes
+- Implementar visitors para realizar percurso:
+-- in-order
+-- pós-ordem
+-- pré-ordem
+
+Para exibir os elementos da árvore, pós-ordem, basta utilizar o método "debugTree()".
+Para executar os testes basta incluir o arquivo "TestRunner.h" e chamar o método "runAllTests()".
