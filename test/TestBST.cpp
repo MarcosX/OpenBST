@@ -34,8 +34,11 @@ void BinarySearchTreeTest::testFindKeys() {
 void BinarySearchTreeTest::testDeleteKeys() {
 	for (int i = 0; i < 15; ++i) {
 		CPPUNIT_ASSERT(tree->remove(testArray[i]));
-		for (int k = i + 1; k < 15; ++k) {
-			CPPUNIT_ASSERT(tree->search(testArray[k]));
+		for (int k = 0; k < 15; ++k) {
+			if (k <= i)
+				CPPUNIT_ASSERT(!tree->search(testArray[k]));
+			else
+				CPPUNIT_ASSERT(tree->search(testArray[k]));
 		}
 	}
 }

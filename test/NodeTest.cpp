@@ -17,8 +17,8 @@ void NodeTest::setUp() {
 
 void NodeTest::testConstructedNode() {
 	CPPUNIT_ASSERT_EQUAL(10, n->getKey());
-	CPPUNIT_ASSERT_ASSERTION_PASS(n->getLeftNode() == NULL);
-	CPPUNIT_ASSERT_ASSERTION_PASS(n->getRightNode() == NULL);
+	CPPUNIT_ASSERT(n->getLeftNode() == NULL);
+	CPPUNIT_ASSERT(n->getRightNode() == NULL);
 }
 
 void NodeTest::testAssignLeftNode() {
