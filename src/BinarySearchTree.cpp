@@ -161,8 +161,8 @@ void BinarySearchTree::debugTree(Node* node) {
 	debugTree(node->getRightNode());
 }
 
-void BinarySearchTree::acceptVisitor(TreeVisitor visitor) {
-	visitor.visit(root);
+void BinarySearchTree::acceptVisitor(TreeVisitor* visitor) {
+	visitor->visit(root);
 }
 
 BinarySearchTree::~BinarySearchTree() {

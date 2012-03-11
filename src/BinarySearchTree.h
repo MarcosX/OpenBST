@@ -17,7 +17,7 @@ public:
 	void insert(int key);
 	bool search(int key);
 	bool remove(int key);
-	void acceptVisitor(TreeVisitor visitor);
+	void acceptVisitor(TreeVisitor* visitor);
 
 	void debugTree();
 	void debugTree(Node* node);

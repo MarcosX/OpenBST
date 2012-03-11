@@ -9,17 +9,23 @@
 #define TREEVISITOR_H_
 
 #include "Node.h"
+#include <iostream>
 
 class TreeVisitor {
 public:
 	TreeVisitor() {
 	}
 
-	virtual void visit(Node* node) {
+	virtual void visit(Node* node) = 0;
+
+	virtual std::string getOutput() {
+		return this->output;
 	}
 
 	virtual ~TreeVisitor() {
 	}
+protected:
+	std::string output;
 };
 
 #endif /* TREEVISITOR_H_ */

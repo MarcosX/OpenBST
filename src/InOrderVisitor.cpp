@@ -14,8 +14,11 @@ void InOrderVisitor::visit(Node *node) {
 	if (node == NULL)
 		return;
 	InOrderVisitor::visit(node->getLeftNode());
-	std::cout << "[" << node->getKey() << "]";
+	stream << "[";
+	stream << node->getKey();
+	stream << "]";
 	InOrderVisitor::visit(node->getRightNode());
+	output = stream.str();
 }
 
 InOrderVisitor::~InOrderVisitor() {

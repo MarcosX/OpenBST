@@ -10,14 +10,17 @@
 
 #include "TreeVisitor.h"
 #include <iostream>
+#include <sstream>
 
 class InOrderVisitor: public TreeVisitor {
 public:
 	InOrderVisitor();
 
-	void visit(Node* node);
+	virtual void visit(Node* node);
 
 	virtual ~InOrderVisitor();
+private:
+	std::stringstream stream;
 };
 
 #endif /* INORDERVISITOR_H_ */
