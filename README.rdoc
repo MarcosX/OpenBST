@@ -4,12 +4,11 @@ Projeto de implementação de árvore binária de busca (BST) utilizando OpenGL 
 - Implementação da Inserção
 - Implementação da Busca
 - Implementação da Remoção
+- Implementar visitors para realizar percurso InOrder, PreOrder e PostOrder
 
 ==Pendentes
-- Implementar visitors para realizar percurso:
--- in-order
--- pós-ordem
--- pré-ordem
 
-Para exibir os elementos da árvore, pós-ordem, basta utilizar o método "debugTree()".
 Para executar os testes basta incluir o arquivo "TestRunner.h" e chamar o método "runAllTests()".
+
+==CppUnit
+- Instalação: sudo apt-get install libcppunit-1.12-1
