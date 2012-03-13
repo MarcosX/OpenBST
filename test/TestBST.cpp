@@ -43,6 +43,42 @@ void BinarySearchTreeTest::testDeleteKeys() {
 	}
 }
 
+void BinarySearchTreeTest::testDeleteWithLeftChild() {
+	/* Actual Tree
+	 *         10
+	 *     5           15
+	 *   3    8     12     18
+	 * 2  4 6   9  11 13 16  20
+	 */
+	tree->remove(2);
+	for (int i = 0; i < 15; ++i) {
+		if (testArray[i] == 2)
+			CPPUNIT_ASSERT(!tree->search(testArray[i]));
+		else
+			CPPUNIT_ASSERT(tree->search(testArray[i]));
+	}
+}
+
+void BinarySearchTreeTest::testDeleteWithRightChild() {
+	tree->remove(20);
+	for (int i = 0; i < 15; ++i) {
+		if (testArray[i] == 20)
+			CPPUNIT_ASSERT(!tree->search(testArray[i]));
+		else
+			CPPUNIT_ASSERT(tree->search(testArray[i]));
+	}
+}
+
+void BinarySearchTreeTest::testDeleteWithBothChild() {
+	tree->remove(5);
+	for (int i = 0; i < 15; ++i) {
+		if (testArray[i] == 5)
+			CPPUNIT_ASSERT(!tree->search(testArray[i]));
+		else
+			CPPUNIT_ASSERT(tree->search(testArray[i]));
+	}
+}
+
 BinarySearchTreeTest::~BinarySearchTreeTest() {
 }
 

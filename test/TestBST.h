@@ -17,6 +17,9 @@ class BinarySearchTreeTest: public CppUnit::TestFixture {
 CPPUNIT_TEST_SUITE (BinarySearchTreeTest);
 		CPPUNIT_TEST(testFindKeys);
 		CPPUNIT_TEST(testDeleteKeys);
+		CPPUNIT_TEST(testDeleteWithLeftChild);
+		CPPUNIT_TEST(testDeleteWithRightChild);
+		CPPUNIT_TEST(testDeleteWithBothChild);
 	CPPUNIT_TEST_SUITE_END ();
 
 public:
@@ -26,6 +29,10 @@ public:
 
 	void testFindKeys();
 	void testDeleteKeys();
+
+	void testDeleteWithLeftChild();
+	void testDeleteWithRightChild();
+	void testDeleteWithBothChild();
 
 	BinarySearchTreeTest();
 	virtual ~BinarySearchTreeTest();
