@@ -12,6 +12,8 @@
 #include <cppunit/extensions/HelperMacros.h>
 #include "../src/BinarySearchTree.h"
 #include "../src/InOrderVisitor.h"
+#include "../src/PreOrderVisitor.h"
+#include "../src/PostOrderVisitor.h"
 
 class VisitorTest: public CppUnit::TestFixture {
 
@@ -29,7 +31,9 @@ public:
 
 	virtual ~VisitorTest();
 private:
-	InOrderVisitor* visitor;
+	InOrderVisitor* inOrderVisitor;
+	PreOrderVisitor* preOrderVisitor;
+	PostOrderVisitor* postOrderVisitor;
 	BinarySearchTree* tree;
 };
 
