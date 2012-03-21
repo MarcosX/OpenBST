@@ -20,7 +20,6 @@ void PreOrderVisitor::visit(Node* node) {
 	stream << "]";
 	PreOrderVisitor::visit(node->getLeftNode());
 	PreOrderVisitor::visit(node->getRightNode());
-	output = stream.str();
 }
 
 PreOrderVisitor::~PreOrderVisitor() {

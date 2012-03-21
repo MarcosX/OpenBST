@@ -9,7 +9,6 @@
 #define PREORDERVISITOR_H_
 
 #include "TreeVisitor.h"
-#include <sstream>
 
 class PreOrderVisitor: public TreeVisitor {
 public:
@@ -18,8 +17,6 @@ public:
 	virtual void visit(Node* node);
 
 	virtual ~PreOrderVisitor();
-private:
-	std::stringstream stream;
 };
 
 #endif /* PREORDERVISITOR_H_ */

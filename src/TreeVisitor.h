@@ -10,6 +10,7 @@
 
 #include "Node.h"
 #include <iostream>
+#include <sstream>
 
 class TreeVisitor {
 public:
@@ -19,6 +20,8 @@ public:
 	virtual void visit(Node* node) = 0;
 
 	virtual std::string getOutput() {
+		output = stream.str();
+		stream.str("");
 		return this->output;
 	}
 
@@ -26,6 +29,7 @@ public:
 	}
 protected:
 	std::string output;
+	std::stringstream stream;
 };
 
 #endif /* TREEVISITOR_H_ */

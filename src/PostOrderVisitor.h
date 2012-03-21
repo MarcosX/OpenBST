@@ -9,7 +9,6 @@
 #define POSTORDERVISITOR_H_
 
 #include "TreeVisitor.h"
-#include <sstream>
 
 class PostOrderVisitor: public TreeVisitor {
 public:
@@ -18,8 +17,6 @@ public:
 	virtual void visit(Node* node);
 
 	virtual ~PostOrderVisitor();
-private:
-	std::stringstream stream;
 };
 
 #endif /* POSTORDERVISITOR_H_ */
