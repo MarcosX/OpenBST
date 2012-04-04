@@ -3,3 +3,7 @@
 
 #ignore debug files
 Debug/*
+
+#ignore eclipse files
+.cproject
+.project

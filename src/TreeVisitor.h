@@ -12,6 +12,10 @@
 #include <iostream>
 #include <sstream>
 
+/*
+ * Vitisor abstrato para árvore
+ */
+
 class TreeVisitor {
 public:
 	TreeVisitor() {
@@ -28,8 +32,10 @@ public:
 	virtual ~TreeVisitor() {
 	}
 protected:
-	std::string output;
+	// Utilizar para armazenar os nós onde o método de visita passou
 	std::stringstream stream;
+	// O getOutput coloca o stream nesse output e esvazia o stream
+	std::string output;
 };
 
 #endif /* TREEVISITOR_H_ */

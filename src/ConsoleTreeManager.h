@@ -14,10 +14,16 @@
 #include "BinarySearchTree.h"
 #include <cstdlib>
 
-class ConsoleTreeManager {
+/*
+ * Classe ainda em desenvolvimento
+ * Faz a interação do usuário através do Terminal
+ * Não possui testes :/
+ */
+
+class TerminalTreeManager {
 public:
-	ConsoleTreeManager();
-	virtual ~ConsoleTreeManager();
+	TerminalTreeManager();
+	virtual ~TerminalTreeManager();
 
 	void interactive(TreeVisitor* visitor);
 protected:

@@ -2,8 +2,9 @@
 #include "ConsoleTreeManager.h"
 
 int main(int argc, char **argv) {
+// Este código vai executar todos os testes unitários
 //	return runAllTests();
-	ConsoleTreeManager *manager = new ConsoleTreeManager();
+	TerminalTreeManager *manager = new TerminalTreeManager();
 	manager->interactive(new PreOrderVisitor());
 	return 0;
 }

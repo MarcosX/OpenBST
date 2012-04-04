@@ -7,21 +7,22 @@
 
 #include "ConsoleTreeManager.h"
 
-ConsoleTreeManager::ConsoleTreeManager() {
+TerminalTreeManager::TerminalTreeManager() {
 	tree = new BinarySearchTree();
 }
 
-ConsoleTreeManager::~ConsoleTreeManager() {
+TerminalTreeManager::~TerminalTreeManager() {
 	// TODO Auto-generated destructor stub
 }
 
-void ConsoleTreeManager::interactive(TreeVisitor* _visitor) {
+void TerminalTreeManager::interactive(TreeVisitor* _visitor) {
 	visitor = _visitor;
 	while (true) {
 		std::cout << "\n(+) insert (-) remove (=) search (q) quit: ";
 		std::cin >> input;
 		char op = input[0];
 		int number = atoi(input.substr(1, input.length()).c_str());
+		// Refatorar este código para remover o switch
 		switch (op) {
 		case '+':
 			tree->insert(number);
