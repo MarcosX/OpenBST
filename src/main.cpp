@@ -23,8 +23,8 @@ int main(int argc, char **argv) {
 #include "BinarySearchTree.h"
 #include "OpenGLVisitor.h"
 
-#define WINDOW_NAME "Main Window"
-#define WINDOW_WIDTH 640
+#define WINDOW_NAME   "BST in OpenGL"
+#define WINDOW_WIDTH  640
 #define WINDOW_HEIGHT 640
 
 using namespace std;
@@ -41,12 +41,12 @@ void myDisplay(void){
 	int size = sizeof(numbers)/sizeof(int);
 
 	try{
-		for(int i=0;i<1;i++){
+		for(int i=0;i<size;i++){
 			glClear(GL_COLOR_BUFFER_BIT);
 			bst->insert(numbers[i]);
 			bst->acceptVisitor(new OpenGLVisitor());
-			sleep(1);
-		    glFlush();
+			//sleep(1);
+		    //glFlush();
 		}
 	}catch(const char* error){
 		cerr<<error<<endl;

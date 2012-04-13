@@ -16,8 +16,9 @@ public:
 	virtual ~OpenGLVisitor();
 	void visit(Node* root);
 private:
-	void visit(Node* node,int direction);
-	void paint(Node* node,int direction);
+	int numberOfNodes(Node* node);
+	void visit(Node* node,int direction,int x,int y);
+	void paint(Node* node,int direction,int &x,int y);
 };
 
 #endif /* OPENGLVISITOR_H_ */
