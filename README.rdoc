@@ -13,5 +13,5 @@ Projeto de implementação de árvore binária de busca (BST) utilizando OpenGL 
 Para executar os testes basta incluir o arquivo "TestRunner.h" e chamar o método "runAllTests()".
 
 ==CppUnit
-- Instalação: sudo apt-get install libcppunit-1.12-1
+- Instalação: sudo apt-get install libcppunit-1.12-1 libcppunit-dev
 - Uso: verificar classes de testes "/test/*"
