@@ -28,11 +28,14 @@ int main(int argc, char **argv) {
 #define WINDOW_HEIGHT 640
 
 using namespace std;
+bool glLock = false;
 
 /**
  * Função callback chamada para fazer o desenho
  */
 void myDisplay(void){
+	if(glLock) return;
+	glLock = true;
 	glClear(GL_COLOR_BUFFER_BIT);	// Limpa a janela de visualização com a cor de fundo especificada
 
 	BinarySearchTree* bst = new BinarySearchTree();
@@ -45,8 +48,8 @@ void myDisplay(void){
 			glClear(GL_COLOR_BUFFER_BIT);
 			bst->insert(numbers[i]);
 			bst->acceptVisitor(new OpenGLVisitor());
-			//sleep(1);
-		    //glFlush();
+			sleep(1);
+		    glFlush();
 		}
 	}catch(const char* error){
 		cerr<<error<<endl;
