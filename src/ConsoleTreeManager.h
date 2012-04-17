@@ -20,15 +20,14 @@
  * Não possui testes :/
  */
 
-class TerminalTreeManager {
+class ConsoleTree {
 public:
-	TerminalTreeManager();
-	virtual ~TerminalTreeManager();
+	ConsoleTree();
+	virtual ~ConsoleTree();
 
-	void interactive(TreeVisitor* visitor);
+	void interact(BinarySearchTree* tree);
 protected:
 	BinarySearchTree *tree;
-	TreeVisitor *visitor;
 	std::string input;
 };
 

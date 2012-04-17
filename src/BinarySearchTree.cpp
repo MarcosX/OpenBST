@@ -28,8 +28,7 @@ void BinarySearchTree::insert(int key) {
 				return;
 			}
 			newNode = newNode->getRightNode();
-		} else
-			throw "Node already exists";
+		}
 	}
 	newNode = new Node(key);
 }
