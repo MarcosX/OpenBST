@@ -9,30 +9,28 @@
 #include <iostream>
 using namespace std;
 
-void BinarySearchTree::insert(int key) {
+bool BinarySearchTree::insert(int key) {
 	if (root == NULL) {
 		root = new Node(key);
-		return;
+		return true;
 	}
 	Node *newNode = root;
 	while (newNode != NULL) {
 		if (key < newNode->getKey()) {
 			if (newNode->getLeftNode() == NULL) {
 				newNode->setLeftNode(new Node(key));
-				return;
+				return true;
 			}
 			newNode = newNode->getLeftNode();
 		} else if (key > newNode->getKey()) {
 			if (newNode->getRightNode() == NULL) {
 				newNode->setRightNode(new Node(key));
-				return;
+				return true;
 			}
 			newNode = newNode->getRightNode();
-		} else {
-			return;
 		}
 	}
-	newNode = new Node(key);
+	return false;
 }
 
 bool BinarySearchTree::search(int key) {

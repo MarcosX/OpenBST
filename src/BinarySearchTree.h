@@ -14,7 +14,7 @@ class BinarySearchTree: public AbstractTree {
 public:
 	BinarySearchTree();
 
-	void insert(int key);
+	bool insert(int key);
 	bool search(int key);
 	bool remove(int key);
 	void acceptVisitor(TreeVisitor* visitor);
