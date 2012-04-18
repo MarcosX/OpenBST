@@ -41,7 +41,10 @@ void myDisplay(void) {
 
 	BinarySearchTree* bst = new BinarySearchTree();
 	ConsoleTree* console = new ConsoleTree();
-
+	std::cout << "\nOperadores: [ + | - | = ]\nExemplo"
+			"\n\t +10 insere elemento 10"
+			"\n\t =10 busca elemento 10"
+			"\n\t -10 remove elemento 10";
 	while (true) {
 		glClear(GL_COLOR_BUFFER_BIT);
 		console->interact(bst);
