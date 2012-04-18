@@ -32,6 +32,7 @@ bool BinarySearchTree::insert(int key) {
 			return false;
 		}
 	}
+	return false;
 }
 
 bool BinarySearchTree::search(int key) {
