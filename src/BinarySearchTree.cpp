@@ -28,6 +28,8 @@ void BinarySearchTree::insert(int key) {
 				return;
 			}
 			newNode = newNode->getRightNode();
+		} else {
+			return;
 		}
 	}
 	newNode = new Node(key);
