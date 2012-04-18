@@ -23,19 +23,23 @@ void ConsoleTree::interact(BinarySearchTree* tree) {
 	int number = atoi(input.substr(1, input.length()).c_str());
 	switch (op) {
 	case '+':
-		tree->insert(number);
+		if(tree->insert(number)){
+			std::cout << "#" << number << " inserido";
+		} else {
+			std::cout << "#" << number << " ja existe";
+		}
 		break;
 	case '-':
 		if (tree->remove(number))
-			std::cout << "#" << number << " removido\n";
+			std::cout << "#" << number << " removido";
 		else
-			std::cout << "#" << number << " nao encontrado\n";
+			std::cout << "#" << number << " nao encontrado";
 		break;
 	case '=':
 		if (tree->search(number))
-			std::cout << "#" << number << " encontrado\n";
+			std::cout << "#" << number << " encontrado";
 		else
-			std::cout << "#" << number << " nao encontrado\n";
+			std::cout << "#" << number << " nao encontrado";
 		break;
 	default:
 		exit(0);

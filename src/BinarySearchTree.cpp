@@ -28,9 +28,10 @@ bool BinarySearchTree::insert(int key) {
 				return true;
 			}
 			newNode = newNode->getRightNode();
+		} else {
+			return false;
 		}
 	}
-	return false;
 }
 
 bool BinarySearchTree::search(int key) {

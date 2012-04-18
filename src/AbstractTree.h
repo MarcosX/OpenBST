@@ -14,7 +14,7 @@
 class AbstractTree {
 public:
 	AbstractTree();
-	virtual void insert(int key) = 0;
+	virtual bool insert(int key) = 0;
 	virtual bool search(int key) = 0;
 	virtual bool remove(int key) = 0;
 	virtual void acceptVisitor(TreeVisitor* visitor) = 0;
