@@ -6,9 +6,9 @@ Projeto de implementação de árvore binária de busca (BST) utilizando OpenGL 
 - Implementação da Remoção
 - Implementar visitors para realizar percurso InOrder, PreOrder e PostOrder
 - Implementar interação via console
+- Implementar visualização simples com OpenGL
 
 ==Pendentes
-- Implementar visualização simples com OpenGL
 
 Para executar os testes basta incluir o arquivo "TestRunner.h" e chamar o método "runAllTests()".
 
