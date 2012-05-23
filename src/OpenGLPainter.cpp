@@ -140,7 +140,7 @@ void drawSphere(GLfloat x, GLfloat y, GLfloat z, GLdouble radio) {
 	GLfloat mat_emission[] = { 0.3, 0.2, 0.2, 0.0 };
 
 	glPushMatrix();
-	glTranslatef(x, y, 0);
+	glTranslatef(x, y, z);
 	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
 	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
