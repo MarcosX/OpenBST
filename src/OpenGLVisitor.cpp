@@ -16,8 +16,8 @@
 
 using namespace std;
 
-#define ROOT_X	  50
-#define ROOT_Y	  0
+#define ROOT_X	  0
+#define ROOT_Y	  50
 
 #define NODE_RADIUS		  1
 #define NODE_HEIGHT 	  5
@@ -41,17 +41,33 @@ void OpenGLVisitor::visit(Node* root) {
 		return;
 	isRepaint = false;
 	paint(root, ROOT_X, ROOT_Y);
-	visit(root->getLeftNode(), ROOT_X - NODE_HEIGHT, ROOT_Y - NODE_HEIGHT);
-	visit(root->getRightNode(), ROOT_X - NODE_HEIGHT, ROOT_Y + NODE_HEIGHT);
+	int newX = ROOT_X
+			- NODE_HEIGHT
+					* ((int) pow(2.0, getHeight(root->getLeftNode()) - 1));
+	visit(root->getLeftNode(), newX, ROOT_Y - NODE_HEIGHT);
+	newX = ROOT_X
+			+ NODE_HEIGHT
+					* ((int) pow(2.0, getHeight(root->getRightNode()) - 1));
+	visit(root->getRightNode(), newX, ROOT_Y - NODE_HEIGHT);
 }
 
 void OpenGLVisitor::visit(Node* node, int x, int y) {
 	if (node != 0) {
 		paint(node, x, y);
-		if (node->getLeftNode() != 0)
-			visit(node->getLeftNode(), x - NODE_HEIGHT, y - NODE_HEIGHT);
-		if (node->getRightNode() != 0)
-			visit(node->getRightNode(), x - NODE_HEIGHT, y + NODE_HEIGHT);
+		if (node->getLeftNode() != 0) {
+			int newX = x
+					- NODE_HEIGHT
+							* ((int) pow(2.0,
+									getHeight(node->getLeftNode()) - 1));
+			visit(node->getLeftNode(), newX, y - NODE_HEIGHT);
+		}
+		if (node->getRightNode() != 0) {
+			int newX = x
+					+ NODE_HEIGHT
+							* ((int) pow(2.0,
+									getHeight(node->getRightNode()) - 1));
+			visit(node->getRightNode(), newX, y - NODE_HEIGHT);
+		}
 	}
 }
 
@@ -61,5 +77,13 @@ void OpenGLVisitor::repaint() {
 
 void OpenGLVisitor::paint(Node* node, int x, int y) {
 	drawSphere(x, y, 10.0, NODE_RADIUS);
+}
+
+int OpenGLVisitor::getHeight(Node* node) {
+	if (node == 0)
+		return 0;
+	int hRight = getHeight(node->getRightNode());
+	int hLeft = getHeight(node->getLeftNode());
+	return hRight > hLeft ? hRight + 1 : hLeft + 1;
 }
 

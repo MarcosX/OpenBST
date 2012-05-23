@@ -21,6 +21,7 @@ private:
 	int numberOfNodes(Node* node);
 	void visit(Node* node, int x, int y);
 	void paint(Node* node, int x, int y);
+	int getHeight(Node* node);
 };
 
 #endif /* OPENGLVISITOR_H_ */

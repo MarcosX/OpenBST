@@ -30,7 +30,7 @@
 
 using namespace std;
 bool glLock = false;
-GLdouble oX = 0, oY = 0, oZ = -100;
+GLdouble oX = 0, oY = 0, oZ = 100;
 GLfloat angle, fAspect;
 
 BinarySearchTree* bst;
@@ -108,7 +108,7 @@ void EspecificaParametrosVisualizacao(void) {
 	glLoadIdentity();
 
 	// Especifica posição do observador e do alvo
-	gluLookAt(oX, oY, oZ, 0, 0, 0, 1, 0, 0);
+	gluLookAt(oX, oY, oZ, 0, 0, 0, 0, 1, 0);
 
 	visitor->repaint();
 }
