@@ -1,3 +1,16 @@
+/*
+ #include "../test/TestRunner.h"
+ #include "ConsoleTreeManager.h"
+
+ int main(int argc, char **argv) {
+ // Este código vai executar todos os testes unitários
+ //	return runAllTests();
+ TerminalTreeManager *manager = new TerminalTreeManager();
+ manager->interactive(new PreOrderVisitor());
+ return 0;
+ }
+ */
+
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/glut.h>
@@ -17,69 +30,167 @@
 
 using namespace std;
 bool glLock = false;
+GLdouble oX = 0, oY = 0, oZ = -100;
+GLfloat angle, fAspect;
+
+BinarySearchTree* bst;
+ConsoleTree* console;
+OpenGLVisitor* visitor;
 
 /**
  * Função callback chamada para fazer o desenho
  */
 void myDisplay(void) {
-	if (glLock)
-		return;
-	glLock = true;
+	glClear(GL_COLOR_BUFFER_BIT);
 
-	BinarySearchTree* bst = new BinarySearchTree();
-	ConsoleTree* console = new ConsoleTree();
-	std::cout << "\nOperadores: [ + | - | = ]\nExemplo"
+	glColor3f(0.0f, 0.0f, 1.0f);
+
+	// Desenha o teapot com a cor corrente (wire-frame)
+	//	glutWireTeapot(50.0f);
+
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glBegin(GL_LINE);
+	glVertex3f(0.0, 0.0, 0.0);
+	glVertex3f(100.0, 0.0, 0.0);
+	glEnd();
+
+	glColor3f(0.0f, 1.0f, 0.0f);
+	glBegin(GL_LINE);
+	glVertex3f(0.0, 0.0, 0.0);
+	glVertex3f(0.0, 100.0, 0.0);
+	glEnd();
+
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glBegin(GL_LINE);
+	glVertex3f(0.0, 0.0, 0.0);
+	glVertex3f(0.0, 0.0, 100.0);
+	glEnd();
+
+	bst->acceptVisitor(visitor);
+
+	// Executa os comandos OpenGL
+	glutSwapBuffers();
+
+//	if (glLock)
+//		return;
+//	glLock = true;
+//
+//	BinarySearchTree* bst = new BinarySearchTree();
+//	ConsoleTree* console = new ConsoleTree();
+//	std::cout << "\nOperadores: [ + | - | = ]\nExemplo"
+//			"\n\t +10 insere elemento 10"
+//			"\n\t =10 busca elemento 10"
+//			"\n\t -10 remove elemento 10";
+//
+//
+//	while (true) {
+//		glClear(GL_COLOR_BUFFER_BIT);
+//		console->interact(bst);
+//		bst->acceptVisitor(new OpenGLVisitor());
+//		glFlush();
+//	}
+//
+//	glFlush();
+}
+
+void EspecificaParametrosVisualizacao(void) {
+	// Especifica sistema de coordenadas de projeção
+	glMatrixMode(GL_PROJECTION);
+	// Inicializa sistema de coordenadas de projeção
+	glLoadIdentity();
+
+	// Especifica a projeção perspectiva
+	gluPerspective(angle, fAspect, 0.5, 500);
+
+	// Especifica sistema de coordenadas do modelo
+	glMatrixMode(GL_MODELVIEW);
+	// Inicializa sistema de coordenadas do modelo
+	glLoadIdentity();
+
+	// Especifica posição do observador e do alvo
+	gluLookAt(oX, oY, oZ, 0, 0, 0, 1, 0, 0);
+
+	visitor->repaint();
+}
+
+void myInit(void) {
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	angle = 45;
+	bst = new BinarySearchTree();
+	console = new ConsoleTree();
+	visitor = new OpenGLVisitor();
+	std::cout << "'c' para acesssar a linha de comando:"
+			"\nOperadores: [ + | - | = ]\nExemplo"
 			"\n\t +10 insere elemento 10"
 			"\n\t =10 busca elemento 10"
 			"\n\t -10 remove elemento 10";
-	while (true) {
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		console->interact(bst);
-		bst->acceptVisitor(new OpenGLVisitor());
-		glFlush();
-	}
-
-	glFlush();
 }
 
 /**
  * Função callback chamada quando o tamanho da janela é alterado
  */
 void myReshape(GLsizei w, GLsizei h) {
+	// Para previnir uma divisão por zero
+	if (h == 0)
+		h = 1;
+
+	// Especifica o tamanho da viewport
 	glViewport(0, 0, w, h);
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	glOrtho(0, WINDOW_WIDTH, 0, WINDOW_HEIGHT, 0.0, 10.0);
-	glMatrixMode(GL_MODELVIEW);
+
+	// Calcula a correção de aspecto
+	fAspect = (GLfloat) w / (GLfloat) h;
+
+	EspecificaParametrosVisualizacao();
 }
 
-void myInit(void) {
+// Função callback chamada para gerenciar eventos do mouse
+void GerenciaMouse(int button, int state, int x, int y) {
+	if (button == GLUT_LEFT_BUTTON)
+		if (state == GLUT_DOWN) { // Zoom-in
+			if (angle >= 10)
+				angle -= 5;
+		}
+	if (button == GLUT_RIGHT_BUTTON)
+		if (state == GLUT_DOWN) { // Zoom-out
+			if (angle <= 130)
+				angle += 5;
+		}
+	EspecificaParametrosVisualizacao();
+	glutPostRedisplay();
+}
 
-	GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
-	GLfloat diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
-	GLfloat position[] = { 0.0, 3.0, 1.0, 0.0 };
-	GLfloat lmodel_ambient[] = { 0.5, 0.5, 0.5, 1.0 };
-	GLfloat local_view[] = { 0.0 };
-
-	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LESS);
-
-	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
-	glLightfv(GL_LIGHT0, GL_POSITION, position);
-	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, lmodel_ambient);
-	glLightModelfv(GL_LIGHT_MODEL_LOCAL_VIEWER, local_view);
-
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
-	glEnable(GL_COLOR_MATERIAL);
-
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+// Função callback chamada para gerenciar eventos de teclado
+void GerenciaTeclado(unsigned char key, int x, int y) {
+	switch (key) {
+	case 'W':
+	case 'w': // muda a cor corrente para vermelho
+		oX += 15.0;
+		break;
+	case 'A':
+	case 'a': // muda a cor corrente para verde
+		oY += 15.0;
+		break;
+	case 'S':
+	case 's': // muda a cor corrente para azul
+		oX -= 15.0;
+		break;
+	case 'D':
+	case 'd': // muda a cor corrente para azul
+		oY -= 15.0;
+		break;
+	case 'C':
+	case 'c':
+		glClear(GL_COLOR_BUFFER_BIT);
+		console->interact(bst);
+		break;
+	}
+	EspecificaParametrosVisualizacao();
+	glutPostRedisplay();
 }
 
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 	glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 	glutInitWindowPosition(10, 10);
 	glutCreateWindow(WINDOW_NAME);
@@ -87,7 +198,8 @@ int main(int argc, char** argv) {
 	//Callbacks
 	glutDisplayFunc(myDisplay);
 	glutReshapeFunc(myReshape);
-
+	glutMouseFunc(GerenciaMouse);
+	glutKeyboardFunc(GerenciaTeclado);
 	myInit();
 	glutMainLoop();
 }

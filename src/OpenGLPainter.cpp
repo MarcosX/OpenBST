@@ -140,14 +140,14 @@ void drawSphere(GLfloat x, GLfloat y, GLfloat z, GLdouble radio) {
 	GLfloat mat_emission[] = { 0.3, 0.2, 0.2, 0.0 };
 
 	glPushMatrix();
-	glTranslatef(x, y, z);
+	glTranslatef(x, y, 0);
 	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
 	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
 	glMaterialfv(GL_FRONT, GL_SHININESS, low_shininess);
 	glMaterialfv(GL_FRONT, GL_EMISSION, mat_emission);
 	glColor3f(0.2f, 0.5f, 1.0f);
-	glutSolidSphere(radio, 16, 16);
+	glutSolidSphere(1, 16, 16);
 	glPopMatrix();
 }
 

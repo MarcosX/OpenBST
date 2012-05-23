@@ -163,6 +163,8 @@ void BinarySearchTree::debugTree(Node* node) {
 }
 
 void BinarySearchTree::acceptVisitor(TreeVisitor* visitor) {
+	if(root == NULL)
+		return;
 	visitor->visit(root);
 }
 

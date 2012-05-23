@@ -15,10 +15,12 @@ public:
 	OpenGLVisitor();
 	virtual ~OpenGLVisitor();
 	void visit(Node* root);
+	void repaint();
 private:
+	bool isRepaint;
 	int numberOfNodes(Node* node);
-	void visit(Node* node,int direction,int x,int y);
-	void paint(Node* node,int direction,int &x,int y);
+	void visit(Node* node, int x, int y);
+	void paint(Node* node, int x, int y);
 };
 
 #endif /* OPENGLVISITOR_H_ */
