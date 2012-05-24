@@ -43,11 +43,6 @@ OpenGLVisitor* visitor;
 void myDisplay(void) {
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	glColor3f(0.0f, 0.0f, 1.0f);
-
-	// Desenha o teapot com a cor corrente (wire-frame)
-	//	glutWireTeapot(50.0f);
-
 	glColor3f(1.0f, 0.0f, 0.0f);
 	glBegin(GL_LINE);
 	glVertex3f(0.0, 0.0, 0.0);
@@ -88,7 +83,7 @@ void EspecificaParametrosVisualizacao(void) {
 	glLoadIdentity();
 
 	// Especifica posição do observador e do alvo
-	gluLookAt(oX, oY, oZ, 0, 0, 0, 0, 1, 0);
+	gluLookAt(oX, oY, oZ, 0, 50, 0, 0, 1, 0);
 
 	visitor->repaint();
 }

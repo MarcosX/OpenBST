@@ -6,6 +6,7 @@
  */
 
 #include "ConsoleTreeManager.h"
+#include <cstring>
 
 ConsoleTree::ConsoleTree() {
 	tree = new BinarySearchTree();
@@ -17,13 +18,13 @@ ConsoleTree::~ConsoleTree() {
 
 void ConsoleTree::interact(BinarySearchTree* tree) {
 	this->tree = tree;
-	std::cout << "\n(+) inserir (-) remover (=) buscar (q) sair: ";
+	std::cout << "\n(+) inserir (-) remover (=) buscar: ";
 	std::cin >> input;
 	char op = input[0];
 	int number = atoi(input.substr(1, input.length()).c_str());
 	switch (op) {
 	case '+':
-		if(tree->insert(number)){
+		if (tree->insert(number)) {
 			std::cout << "#" << number << " inserido";
 		} else {
 			std::cout << "#" << number << " ja existe";

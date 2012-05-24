@@ -133,19 +133,8 @@ void setBrush(glColor color) {
 }
 
 void drawSphere(GLfloat x, GLfloat y, GLfloat z, GLdouble radio) {
-	GLfloat mat_ambient[] = { 0.7, 0.7, 0.7, 1.0 };
-	GLfloat mat_diffuse[] = { 0.1, 0.5, 0.8, 1.0 };
-	GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
-	GLfloat low_shininess[] = { 5.0 };
-	GLfloat mat_emission[] = { 0.3, 0.2, 0.2, 0.0 };
-
 	glPushMatrix();
 	glTranslatef(x, y, z);
-	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
-	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
-	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
-	glMaterialfv(GL_FRONT, GL_SHININESS, low_shininess);
-	glMaterialfv(GL_FRONT, GL_EMISSION, mat_emission);
 	glColor3f(0.2f, 0.5f, 1.0f);
 	glutSolidSphere(1, 16, 16);
 	glPopMatrix();
