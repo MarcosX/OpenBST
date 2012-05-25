@@ -108,22 +108,18 @@ void drawCircle(glPoint point, float radius, float angle) {
 /**
  * Draw a Text
  */
-void drawText(float posX, float posY, const char* text) {
-	int center = ((sizeof(text) - 1) * 5) / 2;
-	glRasterPos2i(posX - center, posY - 4);
+void drawText(float posX, float posY, float posZ = 0.0, const char* text = "") {
+	glPushMatrix();
+	glColor3f(1.0, 0.0, 0.0);
+	glRasterPos3f(posX, posY, posZ);
 	glutBitmapString(GLUT_BITMAP_HELVETICA_10, (const unsigned char*) text);
+	glPopMatrix();
 }
 
-void drawText(float posX, float posY, int value) {
+void drawText(float posX, float posY, float posZ, int value) {
 	char str[200];
 	sprintf(str, "%d", value);
-	drawText(posX, posY, str);
-}
-
-void drawText(float posX, float posY, float value) {
-	char str[200];
-	sprintf(str, "%f", value);
-	drawText(posX, posY, str);
+	drawText(posX, posY, posZ, str);
 }
 
 void setBrush(glColor color) {

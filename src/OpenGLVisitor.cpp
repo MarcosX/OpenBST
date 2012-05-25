@@ -70,6 +70,7 @@ void OpenGLVisitor::repaint() {
 
 void OpenGLVisitor::paint(Node* node, int x, int y) {
 	drawSphere(x, y, 0.0, NODE_RADIUS);
+	drawText(x, y, 0.0, node->getKey());
 }
 
 int OpenGLVisitor::getHeight(Node* node) {

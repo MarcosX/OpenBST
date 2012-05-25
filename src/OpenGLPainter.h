@@ -63,11 +63,9 @@ void drawCircle(float x, float y, float radius, float angle = 360);
 
 void drawCircle(glPoint point, float radius, float angle = 360);
 
-void drawText(float posX, float posY, const char* text);
+void drawText(float posX, float posY, float posZ, const char* text);
 
-void drawText(float posX, float posY, int value);
-
-void drawText(float posX, float posY, float value);
+void drawText(float posX, float posY, float posZ, int value);
 
 void setBrush(glColor color);
 

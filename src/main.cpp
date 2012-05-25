@@ -23,6 +23,7 @@
 #include "BinarySearchTree.h"
 #include "OpenGLVisitor.h"
 #include "ConsoleTreeManager.h"
+#include "OpenGLPainter.h"
 
 #define WINDOW_NAME   "BST in OpenGL"
 #define WINDOW_WIDTH  640
@@ -44,22 +45,25 @@ void myDisplay(void) {
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glColor3f(1.0f, 0.0f, 0.0f);
-	glBegin(GL_LINE);
+	glBegin(GL_LINES);
 	glVertex3f(0.0, 0.0, 0.0);
 	glVertex3f(100.0, 0.0, 0.0);
 	glEnd();
+	drawText(100.0, 0.0, 0.0, "X");
 
 	glColor3f(0.0f, 1.0f, 0.0f);
-	glBegin(GL_LINE);
+	glBegin(GL_LINES);
 	glVertex3f(0.0, 0.0, 0.0);
 	glVertex3f(0.0, 100.0, 0.0);
 	glEnd();
+	drawText(0.0, 100.0, 0.0, "Y");
 
 	glColor3f(0.0f, 0.0f, 1.0f);
-	glBegin(GL_LINE);
+	glBegin(GL_LINES);
 	glVertex3f(0.0, 0.0, 0.0);
 	glVertex3f(0.0, 0.0, 100.0);
 	glEnd();
+	drawText(0.0, 0.0, 100.0, "Z");
 
 	bst->acceptVisitor(visitor);
 
