@@ -15,5 +15,3 @@ Para executar os testes basta incluir o arquivo "TestRunner.h" e chamar o métod
 ==CppUnit
 - Instalação: sudo apt-get install libcppunit-1.12-1 libcppunit-dev
 - Uso: verificar classes de testes "/test/*"
-
-Adicionei um tag pra versão 2D como v1.0
