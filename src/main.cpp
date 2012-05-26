@@ -44,26 +44,7 @@ OpenGLVisitor* visitor;
 void myDisplay(void) {
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	glColor3f(1.0f, 0.0f, 0.0f);
-	glBegin(GL_LINES);
-	glVertex3f(0.0, 0.0, 0.0);
-	glVertex3f(100.0, 0.0, 0.0);
-	glEnd();
-	drawText(100.0, 0.0, 0.0, "X");
-
-	glColor3f(0.0f, 1.0f, 0.0f);
-	glBegin(GL_LINES);
-	glVertex3f(0.0, 0.0, 0.0);
-	glVertex3f(0.0, 100.0, 0.0);
-	glEnd();
-	drawText(0.0, 100.0, 0.0, "Y");
-
-	glColor3f(0.0f, 0.0f, 1.0f);
-	glBegin(GL_LINES);
-	glVertex3f(0.0, 0.0, 0.0);
-	glVertex3f(0.0, 0.0, 100.0);
-	glEnd();
-	drawText(0.0, 0.0, 100.0, "Z");
+	drawAxis3D();
 
 	bst->acceptVisitor(visitor);
 

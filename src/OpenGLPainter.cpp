@@ -136,3 +136,32 @@ void drawSphere(GLfloat x, GLfloat y, GLfloat z, GLdouble radio) {
 	glPopMatrix();
 }
 
+void drawAxis3D() {
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glBegin(GL_LINES);
+	{
+		glVertex3f(0.0, 0.0, 0.0);
+		glVertex3f(100.0, 0.0, 0.0);
+	}
+	glEnd();
+	drawText(100.0, 0.0, 0.0, "X");
+
+	glColor3f(0.0f, 1.0f, 0.0f);
+	glBegin(GL_LINES);
+	{
+		glVertex3f(0.0, 0.0, 0.0);
+		glVertex3f(0.0, 100.0, 0.0);
+	}
+	glEnd();
+	drawText(0.0, 100.0, 0.0, "Y");
+
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glBegin(GL_LINES);
+	{
+		glVertex3f(0.0, 0.0, 0.0);
+		glVertex3f(0.0, 0.0, 100.0);
+	}
+	glEnd();
+	drawText(0.0, 0.0, 100.0, "Z");
+}
+

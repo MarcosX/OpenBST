@@ -71,4 +71,6 @@ void setBrush(glColor color);
 
 void drawSphere(float x, float y, float z, double radio);
 
+void drawAxis3D();
+
 #endif /* GLUECE_H_ */
